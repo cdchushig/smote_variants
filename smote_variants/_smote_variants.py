@@ -1561,8 +1561,11 @@ class SMOTE(OverSampling):
                                                               1),
                                        X_neighbor - X_base)
 
+        x_syn = samples.copy()
+        y_syn = np.hstack([self.min_label]*n_to_sample)
+
         return (np.vstack([X, samples]),
-                np.hstack([y, np.hstack([self.min_label]*n_to_sample)]))
+                np.hstack([y, np.hstack([self.min_label]*n_to_sample)])), X, y, x_syn, y_syn
 
     def get_params(self, deep=False):
         """
